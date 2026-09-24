@@ -1,5 +1,6 @@
 package com.adonis.catalogorelojes.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -14,8 +15,10 @@ public class Reloj {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "La marca es obligatoria")
-    private String marca;
+    @ManyToOne
+    @JoinColumn(name = "marca_id")
+    @JsonBackReference
+    private Marca marca;
 
     @NotBlank(message = "El modelo es obligatorio")
     private String modelo;
@@ -30,7 +33,7 @@ public class Reloj {
     public Reloj() {
     }
 
-    public Reloj(String marca, String modelo, BigDecimal precio, Integer stock) {
+    public Reloj(Marca marca, String modelo, BigDecimal precio, Integer stock) {
         this.marca = marca;
         this.modelo = modelo;
         this.precio = precio;
@@ -46,11 +49,11 @@ public class Reloj {
         this.id = id;
     }
 
-    public String getMarca() {
+    public Marca getMarca() {
         return marca;
     }
 
-    public void setMarca(String marca) {
+    public void setMarca(Marca marca) {
         this.marca = marca;
     }
 
