@@ -45,3 +45,6 @@ API REST para gestionar un catálogo de relojes. Proyecto de práctica para refo
 - Validaciones con Bean Validation (`@Valid`, `@NotBlank`, `@Positive`)
 - Manejo de códigos de estado HTTP según la operación (200, 201, 204, 400)
 - Conexión a PostgreSQL con variables de entorno en vez de credenciales expuestas
+- Relaciones JPA `@OneToMany`/`@ManyToOne` y el rol de `mappedBy`
+- Manejo de referencias circulares en JSON con `@JsonManagedReference`/`@JsonBackReference`
+- Riesgos de `ddl-auto=update` al modificar un esquema con datos existentes
